@@ -1,0 +1,4 @@
+Promotion of pawns
+Castling king side and queen side
+Checkmate
+Temporary board?
