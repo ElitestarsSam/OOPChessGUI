@@ -558,12 +558,14 @@ class PiecesFrame(customtkinter.CTkFrame):
 
     def buttonCommand(self, location):
         isFirstEmpty = not bool(self.activatedFirst)
+        piece = self.game.getPieceFromLocation(location, self.board)
         if location == self.activatedFirst:
             self.changeColour(self.activatedFirst)
             self.activatedFirst = ()
         elif isFirstEmpty:
-            self.activatedFirst = location
-            self.changeColour(self.activatedFirst)
+            if (self.game.turn == piece[:1]) and (piece[1:] != "E"):
+                self.activatedFirst = location
+                self.changeColour(self.activatedFirst)
         else:
             self.activatedSecond = location
             move = self.game.getSquareFromLocation(self.activatedFirst) + self.game.getSquareFromLocation(
